@@ -4,7 +4,8 @@
   "description": "backend of siskart",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "postinstall": "puppeteer-install"
   },
   "author": "Sahil Khan",
   "license": "ISC",

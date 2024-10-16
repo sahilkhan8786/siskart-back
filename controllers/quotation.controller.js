@@ -284,6 +284,7 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
         headless: true,
+        executablePath: process.env.CHROME_BIN || null, // Use Render-provided Chrome path, or null for Puppeteer's default Chromium
     });
 
     const page = await browser.newPage();
