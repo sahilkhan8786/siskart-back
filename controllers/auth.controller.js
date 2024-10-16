@@ -75,8 +75,10 @@ exports.login = catchAsync(async (req, res, next) => {
 
     const foundUser = await User.findOne({ email }).select('+password');
 
+
     if (!foundUser || !await bcrypt.compare(password, foundUser.password)) return next(new AppError(403, "Wrong Credentials, Try Again!"))
 
+    if (foundUser.isBlocked) return next(new AppError(403, "You have been block by admin."))
     // Generate the token
     const token = sign_token(foundUser, next)
 
