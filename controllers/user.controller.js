@@ -3,14 +3,18 @@ const AppError = require("../utils/AppError");
 const { catchAsync } = require("../utils/catchAsync");
 
 exports.getAllUser = catchAsync(async (req, res, next) => {
-    const users = await User.find();
 
-    return res.json({
-        status: 'success',
-        data: {
-            users
-        }
-    })
+    if (req.user.role === 'admin') {
+        const users = await User.find();
+        return res.json({
+            status: 'success',
+            data: {
+                users
+            }
+        })
+    }
+    return
+
 
 });
 
