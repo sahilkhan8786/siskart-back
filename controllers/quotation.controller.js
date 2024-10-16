@@ -85,7 +85,6 @@ exports.deleteQuotation = catchAsync(async (req, res, next) => {
 
 exports.checkQuotation = catchAsync(async (req, res, next) => {
 
-    const templatePath = '../';
     const id = req.params.id;
     const quotation = await Quotation.findById(id).populate('userId')
         .populate('products.productsId');
@@ -282,7 +281,11 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
     const htmlContent = pdfTemplate(products);
 
     // Launch Puppeteer and generate PDF
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: true,
+    });
+
     const page = await browser.newPage();
     await page.setContent(htmlContent);
 

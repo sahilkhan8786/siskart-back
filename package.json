@@ -19,5 +19,11 @@
     "pdf-lib": "^1.17.1",
     "puppeteer": "^23.3.0",
     "slugify": "^1.6.6"
+  },
+  "puppeteer": {
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   }
 }
