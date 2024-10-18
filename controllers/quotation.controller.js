@@ -282,10 +282,10 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
 
     // Launch Puppeteer and generate PDF
     const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: '/usr/bin/chromium-browser',  // Ensure the path matches the one installed
-        headless: true
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+        headless: false,
     });
+
 
     const page = await browser.newPage();
     await page.setContent(htmlContent);
@@ -298,6 +298,6 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
 
     // Send the PDF as a response
     res.setHeader('Content-Type', 'application/pdf');
-    // res.setHeader('Content-Disposition', 'attachment; filename="quotation.pdf"');
+    res.setHeader('Content-Disposition', 'attachment; filename="quotation.pdf"');
     res.end(pdfBuffer);
 });

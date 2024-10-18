@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "postinstall": "apt-get update && apt-get install -y chromium-browser"
+    "postinstall": "apt-get install -y wget && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i google-chrome-stable_current_amd64.deb && apt-get install -f && rm google-chrome-stable_current_amd64.deb"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
