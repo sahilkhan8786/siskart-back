@@ -283,6 +283,8 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
     // Launch Puppeteer and generate PDF
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+        headless: false,
+
     });
 
 
