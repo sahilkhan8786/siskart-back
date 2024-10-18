@@ -299,6 +299,6 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
 
     // Send the PDF as a response
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename="quotation.pdf"');
+    // res.setHeader('Content-Disposition', 'attachment; filename="quotation.pdf"');
     res.end(pdfBuffer);
 });
