@@ -4,7 +4,7 @@ const AppError = require("../utils/AppError");
 const { catchAsync } = require("../utils/catchAsync");
 const { searchProducts, selectFields, sortProducts, paginateProducts } = require("../utils/filters");
 const mongoose = require('mongoose');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const { pdfTemplate } = require("../utils/pdfTemplate");
 exports.getAllQuotation = catchAsync(async (req, res, next) => {
     let quotations;
@@ -282,11 +282,10 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
 
     // Launch Puppeteer and generate PDF
     const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-        headless: false,
-
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        executablePath: '/usr/bin/chromium-browser',  // Ensure the path matches the one installed
+        headless: true
     });
-
 
     const page = await browser.newPage();
     await page.setContent(htmlContent);

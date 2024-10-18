@@ -4,10 +4,9 @@
   "description": "backend of siskart",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "postinstall": "apt-get update && apt-get install -y chromium-browser"
   },
-  "author": "Sahil Khan",
-  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -17,13 +16,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.2",
     "pdf-lib": "^1.17.1",
-    "puppeteer": "^23.6.0",
+    "puppeteer-core": "^23.3.0",
     "slugify": "^1.6.6"
-  },
-  "puppeteer": {
-    "args": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
   }
 }

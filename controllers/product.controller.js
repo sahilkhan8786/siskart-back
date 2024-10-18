@@ -1,5 +1,5 @@
 const { catchAsync } = require("../utils/catchAsync")
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const path = require('path')
 const { jsonDataFromCSV } = require("../utils/jsonDataFromCSV");
 const Product = require("../models/Product.model");
