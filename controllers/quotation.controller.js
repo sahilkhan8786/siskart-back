@@ -283,7 +283,6 @@ exports.approveQuotation = catchAsync(async (req, res, next) => {
     // Launch Puppeteer and generate PDF
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || 'google-chrome-stable' // Ensure this is the correct path for your environment
     });
 
 
