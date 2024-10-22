@@ -19,7 +19,7 @@ const app = express();
 // MIDDLEWARES
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://siskart-front.vercel.app'],
+    origin: process.env.ALLOWED_ORIGINS.split(','),
     credentials: true,
     allowedHeaders: ['Authorization', 'Content-Type']
 }))
